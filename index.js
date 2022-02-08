@@ -40,16 +40,41 @@ var 나이2;
 // number타입 +1 (허용)
 // string | number +1 (안됨)
 // 나이2 + 1; 안됨 
-// 변수 타입 지정해보기 1
-var user = 'kim';
-var age = undefined;
-var married = false;
-var 철수 = [user, age, married];
-// 타입 지정해보기  답 2
-var 학교 = {
-    score: [100, 97, 84],
-    teacher: 'Phil',
-    friend: 'John'
-};
-학교.score[4] = false;
-학교.friend = ['Lee', 학교.teacher];
+// 함수는 파라미터,return값에 타입지정 가능
+// 자바스크립트와 다른점 -> 타입지정된 파라미터 필수
+function 함수(x) {
+    return x * 2;
+}
+함수(5);
+// 파라미터가 옵션일 경우엔 -> 파라미터변수?:타입
+// 변수?:number는 -> 변수:number|undefined와 같음
+function 함수3(x) {
+    return x * 2;
+}
+함수3();
+// 함수에서 void타입 활용 가능 -> 실수로 뭔가 return하는걸 사전에 막을 수 있음
+function 함수2(x) {
+    // return x * 2
+}
+// Narrowing으로 판정해주는 문법들
+// typeof 변수
+// 속셩명 in 오브젝트자료
+// 인스턴스 instanceof 부모
+function 내함수(x) {
+    if (typeof x === 'string') {
+        return x + '1';
+    }
+    else {
+        return x + 1;
+    }
+}
+내함수(123);
+// assertion 문법의 용도
+// 1. Narrowing 할때
+// 2. 무슨 타입이 들어올지 100% 확실할 때 쓰기
+// 남이 짠 코드 수정할때, 왜 타입에러가 나는지 모르겠을 때 비상용으로 주로 쓰임
+function 내함수2(x) {
+    var array = [];
+    array[0] = x;
+}
+내함수2(123);
