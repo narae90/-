@@ -67,3 +67,18 @@ function 클리닝함수(a) {
     return 클리닝완료된거;
 }
 console.log(클리닝함수([123, '3']));
+var 테스트 = {
+    size: 1234,
+    position: [1, 2, 3, 4]
+};
+var 테스트2 = {
+    name: 'kim',
+    phone: 123,
+    email: 'na@naver.com'
+};
+var 테스트3 = {
+    name: 'kim',
+    adult: true,
+    phone: 1234,
+    email: 'rae@naver.com'
+};

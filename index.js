@@ -47,7 +47,7 @@ function 함수(x) {
 }
 함수(5);
 // 파라미터가 옵션일 경우엔 -> 파라미터변수?:타입
-// 변수?:number는 -> 변수:number|undefined와 같음
+// 변수?(물음표):number는 -> 변수:number|undefined와 같음
 function 함수3(x) {
     return x * 2;
 }
@@ -78,3 +78,9 @@ function 내함수2(x) {
     array[0] = x;
 }
 내함수2(123);
+var 동물 = 123;
+var 동물2 = { name: 'kim', age: 5 };
+var 남친 = {
+    name: '강동원'
+};
+var position = { x: 10, y: 30 };

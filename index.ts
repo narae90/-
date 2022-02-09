@@ -80,7 +80,7 @@ function 함수(x :number) :number {
 함수(5)
 
 // 파라미터가 옵션일 경우엔 -> 파라미터변수?:타입
-// 변수?:number는 -> 변수:number|undefined와 같음
+// 변수?(물음표):number는 -> 변수:number|undefined와 같음
 function 함수3(x? :number) :number {
     return x * 2
 }
@@ -123,3 +123,40 @@ function 내함수2(x :number|string){
 }
 
 내함수2(123);
+
+
+
+// type 변수(alias) 만드는 법
+
+type Animal = string | number | undefined;
+type Animal2 = { name : string, age : number }
+
+let 동물:Animal = 123;
+let 동물2 :Animal2 = {name : 'kim', age: 5}
+
+
+
+//오브젝트 자료 수정도 막을수 있음 -> readonly(읽기전용)
+type Boyfriend = {
+    readonly name : string
+}
+
+const 남친 :Boyfriend = {
+    name : '강동원'
+}
+
+
+// type 변수 -> union type으로 합치기 가능
+type Name = string;
+type Age = number;
+//합치기
+type Person = Name | Age;
+
+
+type PositionX = { x :number};
+type PositionY = { y :number};
+// & 연산자로 오브젝트 타입 합치기 (extend)
+type NewType = PositionX & PositionY // = {x:number, y:number}
+
+let position :NewType = { x: 10, y:30}
+
