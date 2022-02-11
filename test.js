@@ -82,3 +82,11 @@ var 테스트3 = {
     phone: 1234,
     email: 'rae@naver.com'
 };
+var cutZero = function (x) {
+    var result = x.replace(/^0+/, ""); // /어쩌구/ 이건 정규식문법인데 정규식은 글자에서 원하는 글자를 찾는 식일 뿐입니다. 구글 검색
+    return result;
+};
+function removeDash(x) {
+    var result = x.replace(/-/g, "");
+    return parseFloat(result);
+}

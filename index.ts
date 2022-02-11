@@ -81,10 +81,10 @@ function 함수(x :number) :number {
 
 // 파라미터가 옵션일 경우엔 -> 파라미터변수?:타입
 // 변수?(물음표):number는 -> 변수:number|undefined와 같음
-function 함수3(x? :number) :number {
-    return x * 2
-}
-함수3()
+// function 함수3(x? :number) :number {
+//     return x * 2
+// }
+// 함수3()
 
 // 함수에서 void타입 활용 가능 -> 실수로 뭔가 return하는걸 사전에 막을 수 있음
 function 함수2(x :number) :void {
@@ -160,3 +160,84 @@ type NewType = PositionX & PositionY // = {x:number, y:number}
 
 let position :NewType = { x: 10, y:30}
 
+
+// 더 엄격한 타입지정  Literal types
+
+let 이름4 : 'kim';
+let 접니다 : '솔로' | 'yang';
+
+function 함수5(a:'hello') : 1 | 0 {
+    return 1
+}
+
+function 가위바위보(a : '가위'| '바위' | '보') : ('가위'| '바위' | '보')[]{
+    return ['가위']
+
+}
+가위바위보('바위')
+
+// Literal type 문제점
+
+var 자료 = {
+    name : 'kim'
+} as const // 해결법
+
+function 내함수3(a:'kim'){
+
+}
+내함수3(자료.name) // 문제점
+
+
+// type alias에 함수 type 저장해서 쓰는 법
+
+type 함수타입 = (a: string) => number;
+
+let 함수6 :함수타입 = function(a){
+    return 10
+
+}
+
+
+// object 안에 함수 만들기 
+// 다시 해보기
+let 회원정보 = {
+    name : 'kim',
+    plusOne(a:number):number{      //plusOne는 파라미터 number return값은 number(plusOne이라는 속성은 함수여야하고, 숫자를 넣어서 숫자를 뱉는 함수여야합니다.)
+        return a + 10;
+    },
+    changName : () => {// changeName이라는 속성은 함수여야하고, 아무것도 return하면 안됩니다
+
+    }
+}
+
+회원정보.plusOne(1)
+회원정보.changName()
+
+//html 변경해보기 - narrowing 하는 법 
+// 1. null : 제목 != null 
+// 2. instanceof : 제목 instanceof Element -> 가장 많이 씀?
+// 4. 오브젝트에 붙이는 ?. -> 1. 제목에 innerHTML이 있으면 출력해주고 2. 없으면 undifined (optional chaining)
+// 5. strictNullChecks 모드를 false로 바꾸는 무식한 방법
+let 제목 = document.querySelector('#title');
+// if( 제목 != null ){
+if(제목 instanceof Element){
+// if(제목?.innerHTML != undefined ){
+제목.innerHTML ='반갑습니다.'
+}
+
+// 3. as - 비상시만 
+let 제목1 = document.querySelector('#title') as Element;
+제목1.innerHTML ='반갑습니다.'
+
+
+let 링크 = document.querySelector('.link');
+if(링크 instanceof HTMLAnchorElement){ // 태그마다 다 다름 버튼이면 HTMLButtonElement 등 잘 찾아서 쓰기
+링크.href = 'https://kakao.com'
+}
+
+
+//버튼 
+let 버튼 = document.querySelector('#button');
+버튼?.addEventListener('click', function(){
+    console.log('안녕')
+})
