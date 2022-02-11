@@ -241,3 +241,75 @@ let 버튼 = document.querySelector('#button');
 버튼?.addEventListener('click', function(){
     console.log('안녕')
 })
+
+
+//반복문 돌리기 1
+let 링크2 = document.querySelectorAll('.naver');
+
+링크2.forEach((a)=>{
+  if (a instanceof HTMLAnchorElement){
+    a.href = 'https://kakao.com'
+  }
+})
+
+
+// 반복문 돌리기 2
+let 링크3 = document.querySelectorAll('.kakao');
+
+for (let i = 0; i < 3; i++){
+  let a = 링크3[i];
+  if (a instanceof HTMLAnchorElement){
+    a.href = 'https://naver.com'
+  }
+} 
+
+
+//class
+
+class Person1 {
+    name :string;
+ㅣ
+    constructor(a :string){
+        this.name = a;
+
+    }
+
+    함수8(a: string){
+        console.log('안녕'+a)
+    }
+
+}
+
+
+let 사람1 = new Person1('kim');
+let 사람2 = new Person1('yang');
+사람1.함수8('안녕녕')
+
+
+//interface
+// 장점 : extends로 복사 가능
+
+interface Square { 
+    color :string,
+    width : number
+}
+
+let 네모 :Square = {color : 'red', width :100}
+
+
+// 해보기 extends -> &기호도 가능
+interface Student  { name :string }
+interface Teacher extends Student { age :number }
+
+let 학생 :Student = {name : 'kim'}
+let 선생 :Teacher = {name : 'yang', age : 55}
+
+
+// type alias에서도 가능
+// &기호 (intesection type) -> 두 타입을 전부 만족하는 타입
+type Animal1 = {name :string}
+type Cat = { age :number} & Animal1
+
+//type VS interface
+// interface는 중복선언 가능 (합쳐짐) - 유연
+// type은 중복선언 불가능 - 엄격

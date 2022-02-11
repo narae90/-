@@ -139,3 +139,37 @@ var 버튼 = document.querySelector('#button');
 버튼 === null || 버튼 === void 0 ? void 0 : 버튼.addEventListener('click', function () {
     console.log('안녕');
 });
+//반복문 돌리기 1
+var 링크2 = document.querySelectorAll('.naver');
+링크2.forEach(function (a) {
+    if (a instanceof HTMLAnchorElement) {
+        a.href = 'https://kakao.com';
+    }
+});
+// 반복문 돌리기 2
+var 링크3 = document.querySelectorAll('.kakao');
+for (var i = 0; i < 3; i++) {
+    var a = 링크3[i];
+    if (a instanceof HTMLAnchorElement) {
+        a.href = 'https://naver.com';
+    }
+}
+//class
+var Person1 = /** @class */ (function () {
+    function Person1(a) {
+        this.name = a;
+    }
+    Person1.prototype.함수8 = function (a) {
+        console.log('안녕' + a);
+    };
+    return Person1;
+}());
+var 사람1 = new Person1('kim');
+var 사람2 = new Person1('yang');
+사람1.함수8('안녕녕');
+var 네모 = { color: 'red', width: 100 };
+var 학생 = { name: 'kim' };
+var 선생 = { name: 'yang', age: 55 };
+//type VS interface
+// interface는 중복선언 가능 (합쳐짐) - 유연
+// type은 중복선언 불가능 - 엄격
