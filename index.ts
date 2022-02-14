@@ -313,3 +313,59 @@ type Cat = { age :number} & Animal1
 //type VS interface
 // interface는 중복선언 가능 (합쳐짐) - 유연
 // type은 중복선언 불가능 - 엄격
+
+
+// rest parameter 
+// 점3개 붙이면 파라미터 무한으로 들어올수 있음
+// 다른 파라미터 있으면 맨 뒤에만 사용 가능
+function 무한(...a){
+// function 무한(num, ...a){
+
+}
+
+무한(1,4,3,6,3,4)
+
+// 타입지정은 어떻게?
+// 
+function 무한1(...a :number[]){
+
+}
+
+
+// ... spread operator -> 괄호 제거
+// rest parameter은 다른 문법임 
+// 참고하기
+let arr = [1,2,3];
+let arr2 = [4,5,6];
+let arr3 = [...arr, ...arr2]
+
+console.log(arr3)
+
+
+// destructuring 
+let arr4 = ['안녕', 100] // 이 자료들을 변수로 빼서 쓰고 싶으면
+let [변수1,변수2] = ['안녕', 100] // 이렇게 간단하게 하기
+
+//let {student : student, age1 : age1} = {student : true, age1 : 20} // 오브젝트도 가능
+let {student, age1} = {student : true, age1 : 20}  // 생력 가능
+
+
+// 함수파라미터에 destructuring 가능
+let 오브젝트7 = {student : true, age1 : 20} 
+
+function 함수7({student, age}){
+    console.log(student, age)
+
+}
+
+함수7({student : true , age : 20}) 
+
+
+
+//타입지정
+let person = { student : true, age : 20 }
+
+function 함수8({student, age} :{student : boolean, age : number}){
+  console.log(student, age)
+}
+함수8({ student : true, age : 20 })
