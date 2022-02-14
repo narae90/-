@@ -369,3 +369,82 @@ function 함수8({student, age} :{student : boolean, age : number}){
   console.log(student, age)
 }
 함수8({ student : true, age : 20 })
+
+
+
+// Narrowing 2
+function 함수9(a :string | undefined){
+    if( a && typeof a === 'string'){    // a가 undefined면 if문 실행 x
+                                        // a가 string이면 if문 실행 o
+ 
+    }
+}
+
+
+type Fish = {swim :string}
+type Bird = {fly :string}
+
+function 함수10(animal :Fish | Bird){
+    if( 'swim' in animal){  // Fish타입인지 검사
+        animal.swim
+    }
+}
+
+// instanceof 연산자로 object narrowing 가능
+let 날짜 = new Date()
+if (날짜 instanceof Date){
+
+}
+
+
+// 비슷한 object타입이 많을때 literal type 넣어보기
+type Car2 = {
+    wheel : '4개',
+    color : string
+}
+
+type Bike = {
+    wheel : '2개',
+    color : string
+}
+
+function 함수11(x :Car2 | Bike){
+    if(x.wheel === '4개'){
+        console.log('x는 Car타입')
+
+    }
+}
+
+
+
+// never type
+// 조건 1. return 값이 없어야함
+// 조건 2. endpoint가 없어야함
+
+function 함수12() :never{
+    // throw new Error() // 강제 에러
+    while(true){        // 내부코드를 무한히 반복
+
+    }
+    
+
+}
+
+// 실사용
+// 대부분 쓸데가 없음 - void 쓰면 되니까
+// 코드 이상하게 짜면 등장함
+function 함수13(parameter :string){
+    if(typeof parameter == 'string'){
+        console.log(parameter)
+    }else{
+        console.log(parameter) // never 타입
+    }
+}
+
+
+// never 타입 등장 2
+// 어떤 함수표현식은 return타입이 자동으로 never
+let 함수14 = function(){
+    throw new Error()
+
+}
