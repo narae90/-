@@ -448,3 +448,82 @@ let 함수14 = function(){
     throw new Error()
 
 }
+
+
+// public private
+// public 붙으면 모든 자식들이 이용가능
+// 당연히 함수에도 사용가능
+class User1{
+    // public name = 'kim';
+    // private name = 'kim';    // private붙으면 class 안에서만 수정,이용가능
+    name :string;
+    private familyName :string = 'kim'
+    constructor(a){  // 파라미터 적용이 가능하기 때문에 씀
+        this.name= this.familyName + a
+
+    }
+
+    이름변경함수(){
+        this.familyName = 'park';
+    }
+
+}
+
+let 유저1 = new User1('나래')
+console.log(유저1)
+
+유저1.이름변경함수()
+
+
+// 
+class Person2{
+    constructor(public name :string){
+
+    }
+
+}
+
+let 자식 = new Person2('kim');
+console.log(자식)
+
+// protected 붙이면
+// 현재 class{}안에서 + extends 된 class{}안에서 사용 가능, 
+// protected : extends된 class는 사용 가능, 자식들 사용 불가능
+// private : extends된 class는 사용 불가능, 자식들 사용 불가능
+class User3{
+    protected x = 10;
+}
+
+class NewUser extends User3{
+    doThis(){
+        this.x = 20;
+    }
+}
+
+
+// static
+// 부모 class에 직접 부여됨 (+자식에게 안물려줌)
+class User4{
+    // static x = 10;
+    public static x = 10;
+    y = 20;
+}
+
+let 자식2 = new User4();
+console.log(자식2)
+
+
+// 활용
+class User5{
+    static skill = 'js';
+    intro = User5.skill + '전문가입니다.'
+}
+
+let 철수1 = new User5();
+console.log(철수1)
+
+User5.skill = 'ts'  
+
+
+let 철수2 = new User5();
+console.log(철수2)
